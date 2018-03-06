@@ -14,7 +14,7 @@ export default class App extends React.Component {
   // Retrieve the list of ideas from Airtable
   getIdeas() {
     // Airtable API endpoint, replace with your own
-    let airtableUrl = "https://api.airtable.com/v0/appnqLKMZc3dRIA6Q/tastytoppings";
+    let airtableUrl = "https://api.airtable.com/v0/appnqLKMZc3dRIA6Q/tastytoppings/";
 
     // Needed for Airtable authorization, replace with your own API key
     let requestOptions = {
@@ -45,7 +45,7 @@ export default class App extends React.Component {
     rowMap[`${secId}${rowId}`].props.closeRow();
 
     // Airtable API endpoint
-    let airtableUrl = "https://api.airtable.com/v0/appnqLKMZc3dRIA6Q/tastytoppings" + data.id;
+    let airtableUrl = "https://api.airtable.com/v0/appnqLKMZc3dRIA6Q/tastytoppings/" + data.id;
 
     // Needed for Airtable authorization
     let requestOptions = {
@@ -76,7 +76,7 @@ export default class App extends React.Component {
     rowMap[`${secId}${rowId}`].props.closeRow();
 
     // Airtable API endpoint
-    let airtableUrl = "https://api.airtable.com/v0/appnqLKMZc3dRIA6Q/tastytoppings" + data.id;
+    let airtableUrl = "https://api.airtable.com/v0/appnqLKMZc3dRIA6Q/tastytoppings/" + data.id;
 
     // Needed for Airtable authorization
     let requestOptions = {
@@ -126,7 +126,7 @@ export default class App extends React.Component {
     newIdeasData.splice(rowId, 1);
 
     // Airtable API endpoint
-    let airtableUrl = "https://api.airtable.com/v0/appnqLKMZc3dRIA6Q/tastytoppings" + data.id;
+    let airtableUrl = "https://api.airtable.com/v0/appnqLKMZc3dRIA6Q/tastytoppings/" + data.id;
 
     // Needed for Airtable authorization
     let requestOptions = {
@@ -152,6 +152,7 @@ export default class App extends React.Component {
       <ListItem style={{ paddingLeft: 20, paddingRight: 20 }}>
         <Body>
           <Text>{data.fields.toppings}</Text>
+          <Text>{data.fields.type}</Text>
         </Body>
         <Right>
           <Text note>{data.fields.votes} votes</Text>
@@ -164,7 +165,7 @@ export default class App extends React.Component {
   renderSwipeRight(data, secId, rowId, rowMap) {
     return (
       <Button full success onPress={() => this.upvoteIdea(data, secId, rowId, rowMap)}>
-        <Icon active name="thumbs-up" />
+        <Icon active name="pizza" />
       </Button>
     )
   }
@@ -172,8 +173,8 @@ export default class App extends React.Component {
   // The UI for what appears when you swipe left
   renderSwipeLeft(data, secId, rowId, rowMap) {
     return (
-      <Button full danger onPress={() => this.deleteIdea(data, secId, rowId, rowMap)}>
-        <Icon active name="thumbs-down" />
+      <Button full danger onPress={() => this.downvoteIdea(data, secId, rowId, rowMap)}>
+        <Icon active name="pizza" />
       </Button>
     )
   }
