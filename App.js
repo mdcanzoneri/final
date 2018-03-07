@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListView, StyleSheet, View } from 'react-native';
-import { Body, Title, Right, Container, Header, Content, Button, Icon, List, ListItem, Text } from 'native-base';
+import { Body, Title, Right, Container, Header, Content, Button, Icon, List, ListItem, Text} from 'native-base';
 
 export default class App extends React.Component {
   constructor() {
@@ -151,11 +151,11 @@ export default class App extends React.Component {
     return (
       <ListItem style={{ paddingLeft: 20, paddingRight: 20 }}>
         <Body>
-          <Text>{data.fields.toppings}</Text>
-          <Text>{data.fields.type}</Text>
+          <Text style={{color: 'red', fontSize: 20}}>{data.fields.toppings}</Text>
+          <Text style={{color: 'lightgray', fontSize: 15}}>{data.fields.type}</Text>
         </Body>
         <Right>
-          <Text note>{data.fields.votes} votes</Text>
+          <Text note style={{color: 'green', fontSize: 20}}>{data.fields.votes} votes</Text>
         </Right>
       </ListItem>
     )
@@ -183,9 +183,9 @@ export default class App extends React.Component {
     let rows = this.ds.cloneWithRows(this.state.ideas);
     return (
       <Container>
-        <Header>
+        <Header style={{backgroundColor: 'green'}}>
           <Body>
-            <Title>Tasty Toppings</Title>
+            <Title style={{color: 'white', fontSize: 25}}>Tasty Toppings</Title>
           </Body>
         </Header>
         <Content>
